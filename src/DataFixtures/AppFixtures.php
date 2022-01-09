@@ -54,6 +54,22 @@ class AppFixtures extends Fixture
                 $manager->persist($Entreprise);
             }
         
+            //Création des stages
+            for($i = 0; $i <15; $i++)
+            {
+                $nbEntreprise = $faker->numberBetween($min = 0, $max = 14);
+                $nbFormations = $faker->numberBetween($min = 0, $max = 3);
+
+                $Stage = new Stage();
+                $Stage->setTitre($faker->realText($maxNbChars = 30, $indexSize = 2));
+                $Stage->setDescMission($faker->realText($maxNbChars = 255, $indexSize = 2));
+                $Stage->setEmailContact($faker->safeEmail);
+
+                $Stage->setEntreprise($tabEntreprise[$nbEntreprise]);
+                $Stage->addFormation($tabFormations[$nbFormations]);
+
+                $manager->persist($Stage);
+            }
 
 
         $manager->flush();
