@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9fd26246968e8aa9ade49abe8847662fec450df0',
+        'reference' => 'a5795c0bd1455696042cfdc0060c963d80c2c70e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9fd26246968e8aa9ade49abe8847662fec450df0',
+            'reference' => 'a5795c0bd1455696042cfdc0060c963d80c2c70e',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -198,6 +198,15 @@
             'aliases' => array(),
             'reference' => 'ee0db30118f661fb166bcffbf5d82032df484697',
             'dev_requirement' => false,
+        ),
+        'fakerphp/faker' => array(
+            'pretty_version' => 'v1.17.0',
+            'version' => '1.17.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../fakerphp/faker',
+            'aliases' => array(),
+            'reference' => 'b85e9d44eae8c52cca7aa0939483611f7232b669',
+            'dev_requirement' => true,
         ),
         'friendsofphp/proxy-manager-lts' => array(
             'pretty_version' => 'v1.0.5',
