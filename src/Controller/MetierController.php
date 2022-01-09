@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
 
 class MetierController extends AbstractController
 {
@@ -13,9 +14,14 @@ class MetierController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('metier/index.html.twig', [
-            'controller_name' => 'MetierController',
-        ]);
+        //Récupérer le répository de l'entité Stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupérer les stages enregistrés en BD
+        $stages = $repositoryStage->findAll();
+
+        //Envoyer les stages récupérés à la vue chargée de les afficher
+        return $this->render('metier/index.html.twig', ['stages'=>$stages]);
     }
 
     /**
