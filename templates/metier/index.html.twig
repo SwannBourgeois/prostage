@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MetierController!{% endblock %}
+{% block title %}Prostage{% endblock %}
 
 
 {% block contenu %}
@@ -17,9 +17,11 @@
 Vous trouverez ci-dessous la liste des stages :
 </p>
 
+
+
 {% for stage in stages %}
 
-  <div class="card-deck">
+<div class="card-deck">
 
   <div class="card">
     <div class="card-body">
@@ -39,3 +41,4 @@ Vous trouverez ci-dessous la liste des stages :
   {% endfor %}
 
 {% endblock %}
+

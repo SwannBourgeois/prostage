@@ -49,9 +49,12 @@ class MetierController extends AbstractController
      */
     public function stages($id): Response
     {
-        return $this->render('metier/stages.html.twig', [
-            'controller_name' => 'MetierController',
-            'id'=>$id,
-        ]);
+        //Récupérer le répository de l'entité Stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupérer les stages enregistrés en BD
+        $stage = $repositoryStage->find($id);
+
+        return $this->render('metier/stages.html.twig', ['stage'=>$stage]);
     }
 }
