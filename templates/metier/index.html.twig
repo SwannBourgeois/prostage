@@ -2,6 +2,7 @@
 
 {% block title %}Hello MetierController!{% endblock %}
 
+
 {% block contenu %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -16,12 +17,7 @@
 Vous trouverez ci-dessous la liste des stages :
 </p>
 
-<ul>
-    <a href="{{path('metier_entreprises')}}" >Filtrer par entreprises</a>
-</ul>
-<ul>
-    <a href="{{path('metier_formations')}}" >Filtrer par formation</a>
-</ul>
+
 <ul>
     <li>
         <a href="{{path('metier_stages', {id:1})}}" >Stage 1</a>
