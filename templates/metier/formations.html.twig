@@ -3,13 +3,18 @@
 {% block title %}Prostage{% endblock %}
 
 {% block contenu %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Cette page affichera la liste des formations de l'IUT</h1>
+    {% for formation in formations %}
 
-</div>
+        <div class="card-deck">
+
+        <div class="card">
+            <div class="card-body">
+            <a href="{{path('metier_formations_stage',{id:formation.id})}}"><h5 class="card-title">{{formation.nomLong}}</h5></a>
+            <p class="card-text">{{formation.nomLong}} | {{formation.nomCourt}} </p>
+            </div>
+        </div>
+        
+        <br/>
+    {% endfor %}
 {% endblock %}
