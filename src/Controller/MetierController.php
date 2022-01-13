@@ -8,18 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
-
+use App\Repository\StageRepository;
+use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
 
 class MetierController extends AbstractController
 {
     /**
      * @Route("/", name="metier_accueil")
      */
-    public function index(): Response
+    public function index(StageRepository $repositoryStage): Response
     {
-        //Récupérer le répository de l'entité Stage
-        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-
         //Récupérer les stages enregistrés en BD
         $stages = $repositoryStage->findAll();
 
@@ -30,11 +29,8 @@ class MetierController extends AbstractController
     /**
      * @Route("/entreprises", name="metier_entreprises")
      */
-    public function entreprises(): Response
+    public function entreprises(EntrepriseRepository $repositoryEntreprise): Response
     {
-        //Récupérer le répository de l'entité Entreprise
-        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
-
         //Récupérer les entreprises enregistrées en BD
         $entreprises = $repositoryEntreprise->findAll();
 
@@ -45,14 +41,8 @@ class MetierController extends AbstractController
     /**
      * @Route("/entreprises_stage/{id}", name="metier_entreprises_stage")
      */
-    public function entreprises_stage($id): Response
+    public function entreprises_stage(Entreprise $entreprisesStage): Response
     {
-        //Récupérer le répository de l'entité Entreprise
-        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
-
-        //Récupérer les entreprises enregistrées en BD
-        $entreprisesStage = $repositoryEntreprise->find($id);
-
         //Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('metier/entreprises_stage.html.twig', ['entreprisesStage'=>$entreprisesStage]);
     }
@@ -60,11 +50,8 @@ class MetierController extends AbstractController
     /**
      * @Route("/formations", name="metier_formations")
      */
-    public function formations(): Response
+    public function formations(FormationRepository $repositoryFormations): Response
     {
-        //Récupérer le répository de l'entité Entreprise
-        $repositoryFormations = $this->getDoctrine()->getRepository(Formation::class);
-
         //Récupérer les entreprises enregistrées en BD
         $formations = $repositoryFormations->findAll();
 
@@ -75,14 +62,8 @@ class MetierController extends AbstractController
     /**
      * @Route("/formations_stage/{id}", name="metier_formations_stage")
      */
-    public function formations_stage($id): Response
+    public function formations_stage(Formation $formationsStage): Response
     {
-        //Récupérer le répository de l'entité Entreprise
-        $repositoryFormations = $this->getDoctrine()->getRepository(Formation::class);
-
-        //Récupérer les entreprises enregistrées en BD
-        $formationsStage = $repositoryFormations->find($id);
-
         //Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('metier/formations_stage.html.twig', ['formationsStage'=>$formationsStage]);
     }
@@ -90,14 +71,8 @@ class MetierController extends AbstractController
     /**
      * @Route("/stages/{id}", name="metier_stages")
      */
-    public function stages($id): Response
+    public function stages(Stage $stage): Response
     {
-        //Récupérer le répository de l'entité Stage
-        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-
-        //Récupérer les stages enregistrés en BD
-        $stage = $repositoryStage->find($id);
-
         return $this->render('metier/stages.html.twig', ['stage'=>$stage]);
     }
 }
